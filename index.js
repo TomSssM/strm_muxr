@@ -83,9 +83,9 @@ run(() => {
     }
   });
 
-  script.push(getSuccessMessage(true));
+  script.push(`echo -e ${getSuccessMessage(true)}`, '');
 
-  warnings.push([...orphanedSubtitles.values()].map(
+  warnings.push(...[...orphanedSubtitles.values()].map(
     (subtitleFilePath) => `orphaned subtitle file ${subtitleFilePath}`
   ));
 

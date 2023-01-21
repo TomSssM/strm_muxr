@@ -6,12 +6,18 @@ const VideoFile = {
 }
 
 function getFileExtension(filePath) {
-  return path.extname(filePath);
+  const extname = path.extname(filePath);
+
+  if (extname.startsWith('.')) {
+    return extname.slice(1);
+  }
+
+  return extname;
 }
 
 function getFileName(filePath, withExtension = false) {
   const extension = getFileExtension(filePath);
-  return path.basename(filePath, withExtension ? undefined : extension);
+  return path.basename(filePath, withExtension ? undefined : `.${extension}`);
 }
 
 function isKnownVideoFile(filePath) {

@@ -35,7 +35,7 @@ function printWarnings(warnings, pad = true) {
 
   warnings.forEach((warning) => {
     if (warning) {
-      console.log(`${yellow('WARNING')} ${warning}`);
+      console.log(`${yellow('warning')} ${warning}`);
     }
   });
 

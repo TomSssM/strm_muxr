@@ -1,9 +1,10 @@
 # strm_muxr
-
 ## TODO
 - update nvmrc as per windows
 - test on windows GitBash
+- after everything is done, push git tags to stable version
 
+## draft
 nvm use # if using nvm or else install Node.js from .nvmrc (v16.6.2)
 npm run build
 * check warnings.log.txt
