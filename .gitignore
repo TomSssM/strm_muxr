@@ -1,4 +1,5 @@
 /run.sh
+/warnings.log.txt
 /content
 /out
 /source_track*
