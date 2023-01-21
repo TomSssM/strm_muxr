@@ -1,0 +1,12 @@
+{
+  "name": "strm_muxr",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bash run.sh",
+    "build": "node index.js",
+    "clean": "git clean -dfx"
+  },
+  "keywords": [],
+  "author": "TomSssM",
+  "license": "ISC"
+}
