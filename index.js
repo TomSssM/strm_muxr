@@ -1,6 +1,6 @@
 const path = require('path');
 const { exists, mkdir, getFilePaths, writeTextFile } = require('./utils/fs');
-const { VideoFile, getFileName, isKnownVideoFile, isMp4File, isMkvFile } = require('./utils/path');
+const { getFileName, isKnownVideoFile, isMp4File, isMkvFile } = require('./utils/path');
 const { run, printWarnings, getSuccessMessage, exitSuccess } = require('./utils/process');
 
 const ROOT_DIR = process.cwd();
@@ -29,7 +29,6 @@ run(() => {
 
   videoFiles.forEach((videoFilePath) => {
     const videoFileName = getFileName(videoFilePath);
-    const outputFilePath = path.join(DIST_DIR, `${videoFileName}.${VideoFile.Mkv}`);
     const subtitleFilePath = subtitleFiles.find((filePath) => {
       return getFileName(filePath).startsWith(videoFileName);
     });
@@ -51,16 +50,14 @@ run(() => {
     if (isMp4File(videoFilePath) && hasSubtitles) {
       script.push([
         './scripts/remux_mp4_sub.sh',
-        `"${videoFilePath}"`,
+        `"${videoFileName}"`,
         `"${subtitleFilePath}"`,
-        `"${outputFilePath}"`,
         '&& \\'
       ].join(' '));
     } else if (isMp4File(videoFilePath)) {
       script.push([
         './scripts/remux_mp4.sh',
-        `"${videoFilePath}"`,
-        `"${outputFilePath}"`,
+        `"${videoFileName}"`,
         '&& \\'
       ].join(' '));
     }
@@ -68,16 +65,14 @@ run(() => {
     if (isMkvFile(videoFilePath) && hasSubtitles) {
       script.push([
         './scripts/remux_mkv_sub.sh',
-        `"${videoFilePath}"`,
+        `"${videoFileName}"`,
         `"${subtitleFilePath}"`,
-        `"${outputFilePath}"`,
         '&& \\'
       ].join(' '));
     } else if (isMkvFile(videoFilePath)) {
       script.push([
         './scripts/remux_mkv.sh',
-        `"${videoFilePath}"`,
-        `"${outputFilePath}"`,
+        `"${videoFileName}"`,
         '&& \\'
       ].join(' '));
     }
