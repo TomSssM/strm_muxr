@@ -5,6 +5,7 @@ GREEN="${ESCAPE}[0;32m"
 RESET="${ESCAPE}[0m"
 YELLOW="${ESCAPE}[0;33m"
 RED="${ESCAPE}[0;31m"
+BOLD="${ESCAPE}[1m"
 
 videoFileName=$1
 sub=$2
@@ -50,5 +51,5 @@ then
 fi
 
 echo
-echo -e "${GREEN}success${RESET} ${source}"
+echo -e "${GREEN}success${RESET} ${BOLD}${source}${RESET}"
 echo && echo && echo
